@@ -1,7 +1,6 @@
-import os
 import pandas as pd
 from validators import validate_flight
-from storage import save_to_parquet, load_from_parquet, DEFAULT_FILE
+from storage import save_to_parquet
 
 def add_flight(df, destination, flight_number, aircraft_type):
     if not validate_flight(destination, flight_number, aircraft_type):
