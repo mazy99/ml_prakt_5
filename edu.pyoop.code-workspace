@@ -2,16 +2,15 @@
   "folders": [
     {
       "path": ".",
-      "name": "Flight Manager"  // Добавлено имя проекта для удобства
+      "name": "Flight Manager"  
     }
   ],
   "settings": {
-    // Автосохранение и интерфейс
     "files.autoSave": "onFocusChange",
     "editor.minimap.enabled": false,
     "editor.accessibilitySupport": "off",
     
-    // Исключение ненужных файлов из дерева проекта
+
     "files.exclude": {
       "**/.venv": true,
       "**/.pytest_cache": true,
@@ -22,7 +21,7 @@
       "**/.DS_Store": true
     },
 
-    // Настройки Python
+
     "python.defaultInterpreterPath": "python",
     "python.linting.enabled": true,
     "python.linting.pylintEnabled": false,
@@ -31,28 +30,28 @@
     "python.formatting.provider": "black",
     "python.analysis.typeCheckingMode": "basic",
 
-    // Форматирование кода
+
     "editor.formatOnSave": true,
     "[python]": {
         "python.formatting.blackPath": "black",
         "editor.defaultFormatter": null,
-        "editor.rulers": [88]  // Соответствует line-length в Black
+        "editor.rulers": [88]  
     },
 
-    // Цветовая схема (адаптируйте под свои предпочтения)
+
     "workbench.colorCustomizations": {
       "activityBar.background": "#2c3e50",
       "statusBar.background": "#1a2930",
       "titleBar.activeBackground": "#1a2930"
     },
     
-    // Дополнительные настройки
+
     "editor.renderWhitespace": "selection",
     "editor.guides.bracketPairs": true,
     "terminal.integrated.fontSize": 14
   },
   
-  // Рекомендуемые расширения (VS Code предложит их установить)
+
   "extensions": {
     "recommendations": [
       "ms-python.python",
