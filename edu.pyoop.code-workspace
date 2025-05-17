@@ -2,14 +2,14 @@
   "folders": [
     {
       "path": ".",
-      "name": "Flight Manager"  
+      "name": "Flight Manager"
     }
   ],
   "settings": {
     "files.autoSave": "onFocusChange",
     "editor.minimap.enabled": false,
     "editor.accessibilitySupport": "off",
-    
+
 
     "files.exclude": {
       "**/.venv": true,
@@ -35,7 +35,7 @@
     "[python]": {
         "python.formatting.blackPath": "black",
         "editor.defaultFormatter": null,
-        "editor.rulers": [88]  
+        "editor.rulers": [88]
     },
 
 
@@ -44,13 +44,13 @@
       "statusBar.background": "#1a2930",
       "titleBar.activeBackground": "#1a2930"
     },
-    
+
 
     "editor.renderWhitespace": "selection",
     "editor.guides.bracketPairs": true,
     "terminal.integrated.fontSize": 14
   },
-  
+
 
   "extensions": {
     "recommendations": [

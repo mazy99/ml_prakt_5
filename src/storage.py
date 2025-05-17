@@ -4,6 +4,7 @@ import pandas as pd
 
 DEFAULT_FILE = "flights.parquet"
 
+
 def save_to_parquet(df, file_name=DEFAULT_FILE):
     if df.empty:
         print("⚠️ Внимание: Вы пытаетесь сохранить пустой список рейсов!")
@@ -11,6 +12,7 @@ def save_to_parquet(df, file_name=DEFAULT_FILE):
         print("📅 Сохранение данных...")
         df.to_parquet(file_name, engine="pyarrow")
         print(f"✅ Данные сохранены в {file_name}")
+
 
 def load_from_parquet(file_name=DEFAULT_FILE, destination=None):
     try:

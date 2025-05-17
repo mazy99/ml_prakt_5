@@ -2,6 +2,7 @@
 
 import re
 
+
 def validate_flight(destination, flight_number, aircraft_type):
     if not destination.strip():
         print("❌ Ошибка: Город назначения не может быть пустым.")

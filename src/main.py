@@ -1,14 +1,17 @@
 #!/usr/bin/env python3
 
-import os
 import argparse
+import os
+
 import pandas as pd
-from flights import add_flight, show_flights, remove_flight
-from storage import save_to_parquet, load_from_parquet, DEFAULT_FILE
+
+from flights import add_flight, remove_flight, show_flights
+from storage import DEFAULT_FILE, load_from_parquet, save_to_parquet
+
 
 def main():
     df = pd.DataFrame(columns=["destination", "flight_number", "aircraft_type"])
-    
+
     if os.path.exists(DEFAULT_FILE):
         try:
             df = pd.read_parquet(DEFAULT_FILE, engine="pyarrow").copy()
@@ -29,8 +32,9 @@ def main():
     parser_load.add_argument("destination", type=str, nargs="?", default=None)
 
     parser_remove = subparsers.add_parser("remove", help="Удалить рейс по номеру")
-    parser_remove.add_argument("flight_number", type=str, help="Номер рейса для удаления")
-
+    parser_remove.add_argument(
+        "flight_number", type=str, help="Номер рейса для удаления"
+    )
 
     subparsers.add_parser("show", help="Показать все рейсы")
 
@@ -42,13 +46,18 @@ def main():
         save_to_parquet(df)
     elif args.command == "load":
         loaded_df = load_from_parquet(destination=args.destination)
-        print(loaded_df if not loaded_df.empty else "❌ Рейсов по заданному направлению не найдено.")
+        print(
+            loaded_df
+            if not loaded_df.empty
+            else "❌ Рейсов по заданному направлению не найдено."
+        )
     elif args.command == "show":
         show_flights(df)
     elif args.command == "remove":
         df = remove_flight(df, args.flight_number)
     else:
         parser.print_help()
+
 
 if __name__ == "__main__":
     main()
