@@ -9,7 +9,7 @@ def add_flight(df, destination, flight_number, aircraft_type):
     flight_number = str(flight_number).strip()
     if flight_number in df["flight_number"].values:
         print(f"❌ Ошибка: Рейс с номером {flight_number} уже существует!")
-        return df  # Возвращаем исходный DataFrame без изменений
+        return df  
     new_data = pd.DataFrame([{
         "destination": destination.strip(),
         "flight_number": flight_number,
@@ -23,3 +23,22 @@ def add_flight(df, destination, flight_number, aircraft_type):
 def show_flights(df):
     print("📋 Текущие рейсы:")
     print(df if not df.empty else "❌ Список рейсов пуст.")
+
+def remove_flight(df, flight_number):
+    flight_number = str(flight_number).strip()
+    
+    if df.empty:
+        print("❌ Список рейсов пуст. Удаление невозможно.")
+        return df
+        
+    if flight_number not in df["flight_number"].values:
+        print(f"❌ Рейс с номером {flight_number} не найден.")
+        return df
+    
+    initial_count = len(df)
+    df = df[df["flight_number"] != flight_number]
+    removed_count = initial_count - len(df)
+    
+    print(f"✅ Удалено {removed_count} рейсов с номером {flight_number}.")
+    save_to_parquet(df)
+    return df

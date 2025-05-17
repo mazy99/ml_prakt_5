@@ -1,7 +1,7 @@
 import os
 import argparse
 import pandas as pd
-from flights import add_flight, show_flights
+from flights import add_flight, show_flights, remove_flight
 from storage import save_to_parquet, load_from_parquet, DEFAULT_FILE
 
 def main():
@@ -26,6 +26,10 @@ def main():
     parser_load = subparsers.add_parser("load", help="Загрузить данные по городу")
     parser_load.add_argument("destination", type=str, nargs="?", default=None)
 
+    parser_remove = subparsers.add_parser("remove", help="Удалить рейс по номеру")
+    parser_remove.add_argument("flight_number", type=str, help="Номер рейса для удаления")
+
+
     subparsers.add_parser("show", help="Показать все рейсы")
 
     args = parser.parse_args()
@@ -39,6 +43,8 @@ def main():
         print(loaded_df if not loaded_df.empty else "❌ Рейсов по заданному направлению не найдено.")
     elif args.command == "show":
         show_flights(df)
+    elif args.command == "remove":
+        df = remove_flight(df, args.flight_number)
     else:
         parser.print_help()
 
